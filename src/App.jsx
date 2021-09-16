@@ -1,17 +1,25 @@
 import './App.css';
 import NavBar from "./components/navbar/NavBar";
 import AppRouter from "./components/appRouter/AppRouter";
-import {Container} from "react-bootstrap";
+import {observer} from "mobx-react-lite";
+import {useContext} from "react";
+import {Context} from "./index";
+import Error from "./components/error/Error";
+import Loader from "./helpers/loader/Loader";
 
-const App = () => {
+
+const App = observer(() => {
+    const {productStore} = useContext(Context)
+    console.log(productStore.loading)
+
+
     return (
         <>
             <NavBar/>
-            <Container>
-                <AppRouter/>
-            </Container>
+            {productStore.loading === true && <Loader/>}
+            {productStore.error !== null ? <Error children={productStore.error}/> : <AppRouter/>}
         </>
     );
-}
+})
 
 export default App;

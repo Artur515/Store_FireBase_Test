@@ -1,0 +1,12 @@
+.error{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    width: 18rem;
+    min-height: 15rem;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+
+}

@@ -9,3 +9,20 @@ html a {
     color: lightgray;
     text-decoration: none;
 }
+
+html a:hover {
+    color: white;
+}
+
+.error{
+   position: absolute;
+    color: red;
+}
+
+.cursor{
+    cursor: pointer;
+    transition: linear 0.2s;
+}
+.cursor:hover{
+    color: black;
+}
