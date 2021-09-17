@@ -21,14 +21,14 @@ const NavBar = observer(() => {
                     .then((result) => {
                         const token = result.user.accessToken;
                         localStorage.setItem('myToken', JSON.stringify(token))
-                        console.log(token)
+                        // console.log(token)
                         productStore.setIsAuth(true)
                         productStore.setError(null)
                     }).catch((error) => {
                         const errorMessage = error.message;
                         productStore.setError(errorMessage)
                         productStore.setLoading(false)
-                        console.log(errorMessage)
+                        // console.log(errorMessage)
                     })
                 productStore.setLoading(false)
             }

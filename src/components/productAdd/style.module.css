@@ -1,0 +1,14 @@
+.input_image {
+    max-width: 30%;
+    max-height: 250px;
+}
+
+.input_file {
+    min-width: 60%;
+    margin-bottom: 10px;
+}
+
+.input_area {
+    height: 100px;
+    resize: none;
+}
