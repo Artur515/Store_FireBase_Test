@@ -25,9 +25,7 @@ initializeApp(firebaseConfig);
 export const Context = createContext(null)
 
 ReactDOM.render(
-    <Context.Provider value={{
-        productStore: new ProductStore(),
-    }}>
+    <Context.Provider value={{productStore: new ProductStore()}}>
         <BrowserRouter>
             <App/>
         </BrowserRouter>
