@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Form, Image} from "react-bootstrap";
 import style from "../productAdd/style.module.css";
-import avatar from "../../images/avatar.png";
+import defaultImg from '../../images/avatar.png'
 import {validations} from "../../validation";
 
 
-const FileInput = ({register, errors}) => {
+const FileInput = ({register, errors, image, setImage}) => {
 
-    const [image, setImage] = useState('')
 
     const handleChangeImage = (event) => {
         const reader = new FileReader()
@@ -38,7 +37,7 @@ const FileInput = ({register, errors}) => {
                 {errors?.file?.type === "required" && errors?.file?.type === "required" &&
                 <p className='error'>This field is required</p>}
             </Form.Group>
-            <Image src={image ? image.imagePreview : avatar} className={style.input_image} rounded/>
+            <Image src={image ? image.imagePreview : defaultImg} className={style.input_image} rounded/>
         </Form.Group>
     );
 };

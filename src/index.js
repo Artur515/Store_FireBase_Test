@@ -15,11 +15,15 @@ const firebaseConfig = {
     storageBucket: "store-test-32a4e.appspot.com",
     messagingSenderId: "231286257071",
     appId: "1:231286257071:web:09efb4135787963de62b5a",
-    measurementId: "G-J9NC31RGZB"
+    measurementId: "G-J9NC31RGZB",
+    databaseURL: "https://store-test-32a4e-default-rtdb.europe-west1.firebasedatabase.app/",
 };
+
 
 // Initialize Firebase
 initializeApp(firebaseConfig);
+
+
 
 
 export const Context = createContext(null)
