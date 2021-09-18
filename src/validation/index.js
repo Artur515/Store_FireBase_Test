@@ -8,6 +8,9 @@ export const validations = {
         minLength: 3,
         maxLength: 20
     },
+    image: {
+        required: true
+    },
     title: {
         required: true,
         minLength: 20,
@@ -24,13 +27,13 @@ export const validations = {
         maxLength: 8
     },
     sale: {
-        required: false,
-        pattern: /(^[1-8][0-9]$)|(^90$)/,
-        maxLength: 2
-    },
-    saleData: {
         required: true,
-        date: Date.now()
+        pattern: /(^[1-8][0-9]$)|(^90$)/,
+    },
+    saleDate: {
+        required: true,
+    },
+    notRequired: {
+        required: false
     }
-
 }
