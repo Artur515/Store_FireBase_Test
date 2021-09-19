@@ -14,16 +14,17 @@ html a:hover {
     color: white;
 }
 
-.error{
-   position: absolute;
+.error {
+    position: absolute;
     color: red;
 }
 
-.cursor{
+.cursor {
     cursor: pointer;
     transition: linear 0.2s;
 }
-.cursor:hover{
+
+.cursor:hover {
     color: black;
 }
 

@@ -53,9 +53,9 @@ const NavBar = observer(() => {
             return productStore.isAuth ? (<Navbar bg="dark" variant="dark">
                     <Container>
                         <Navbar.Brand><Link to={PRODUCT_LIST}>Store</Link></Navbar.Brand>
-                        <Nav className="d-flex justify-content-between">
-                            <Link to={PRODUCT_LIST} className='p-2'>Products</Link>
-                            <Link to={PRODUCT_ADD} className='p-2'>Add new product</Link>
+                        <Nav className="d-flex justify-content-between align-items-center flex-wrap">
+                            <Link to={PRODUCT_LIST} className='p-2'><Button variant='outline-light'>Products</Button></Link>
+                            <Link to={PRODUCT_ADD} className='p-2'><Button variant='outline-light'>New product</Button></Link>
                         </Nav>
                         <Button variant='outline-light' onClick={handleLogOut}>LogOut</Button>
                     </Container>

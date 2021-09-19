@@ -6,6 +6,7 @@ import ProductStore from "./store/Store";
 import {initializeApp} from "firebase/app";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import {getDatabase} from "firebase/database";
 
 
 const firebaseConfig = {
@@ -24,12 +25,14 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 
+const database = getDatabase();
+
 
 
 export const Context = createContext(null)
 
 ReactDOM.render(
-    <Context.Provider value={{productStore: new ProductStore()}}>
+    <Context.Provider value={{productStore: new ProductStore(),database:database}}>
         <BrowserRouter>
             <App/>
         </BrowserRouter>

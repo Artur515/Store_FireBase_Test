@@ -1,28 +1,42 @@
-import React, {useContext} from 'react';
-import {ref, onValue} from "firebase/database";
+import React, {useContext, useEffect} from 'react';
+import {ref, onValue, getDatabase} from "firebase/database";
 import {Container} from "react-bootstrap";
 import {Context} from "../../index";
+import Loader from "../../helpers/loader/Loader";
+import ProductInfo from "../productInfo/ProductInfo";
 
 const ProductList = () => {
-    const {database} = useContext(Context)
+
     const {productStore} = useContext(Context)
+    const database = getDatabase()
 
 
-
-    const getProductList = async () => {
+    const getProductList = () => {
         const starCountRef = ref(database, 'products');
-        await onValue(starCountRef, (snapshot) => {
+        onValue(starCountRef, (snapshot) => {
             const data = snapshot.val();
             productStore.setProductList(data)
+            console.log(data)
         });
     }
-    getProductList()
+
+    useEffect(() => {
+        getProductList()
+        // eslint-disable-next-line
+    }, [])
 
 
-    console.log()
     return (
         <Container>
-            Product List
+            <div className='d-flex justify-content-around flex-wrap mt-4'>
+                {productStore.productList === null ? <Loader/> : productStore.productList.map((product) => {
+                    return <ProductInfo key={product.id}
+                                        title={product.title}
+                                        image={product.image}
+                                        price={product.price}
+                                        sale={product.sale}
+                                        date={product.date}/>
+                })}</div>
         </Container>
     );
 };
