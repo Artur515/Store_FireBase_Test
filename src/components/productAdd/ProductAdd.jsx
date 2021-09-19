@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {set, ref, getDatabase} from "firebase/database";
 import {Button, Card, Container, Form} from "react-bootstrap";
 import {useForm} from "react-hook-form";
@@ -6,28 +6,20 @@ import FileInput from "../inputs/FileInput";
 import SaleInputs from "../inputs/SaleInputs";
 import PriceInputs from "../inputs/PriceInputs";
 import TextInputs from "../inputs/TextInputs";
-import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 
 
 const ProductAdd = observer(({title, img, description, sales, price, date}) => {
-        const {productStore} = useContext(Context)
-        const [index, setIndex] = useState(() => {
-            return productStore.productList?.length ? productStore.productList?.length : 0
-        })
         const [checkSales, setCheckSales] = useState(false)
         const [image, setImage] = useState('')
         const database = getDatabase();
 
-        console.log(index)
 
         const {register, handleSubmit, setValue, formState: {errors}} = useForm();
 
 
-
-        const addNewProduct = async (data) => {
-            await set(ref(database, 'products/' + index), {
-                id: Date.now(),
+        const addNewProduct = async (data, id) => {
+            await set(ref(database, 'products/' + id), {
                 title: data.title,
                 price: data.price,
                 description: data.description,
@@ -41,7 +33,8 @@ const ProductAdd = observer(({title, img, description, sales, price, date}) => {
 
         const handleAddProduct = (data) => {
             // const {date, description, price, sale, title} = data
-            addNewProduct(data)
+            const id = Date.now()
+            addNewProduct(data, id)
             setValue('file', '')
             setValue('price', '')
             setValue('title', '')
@@ -49,7 +42,6 @@ const ProductAdd = observer(({title, img, description, sales, price, date}) => {
             setValue('sale', '')
             setValue('date', '')
             setCheckSales(false)
-            setIndex(productStore.productList.length)
         }
 
 

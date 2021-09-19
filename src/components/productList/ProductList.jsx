@@ -4,8 +4,9 @@ import {Container} from "react-bootstrap";
 import {Context} from "../../index";
 import Loader from "../../helpers/loader/Loader";
 import ProductInfo from "../productInfo/ProductInfo";
+import {observer} from "mobx-react-lite";
 
-const ProductList = () => {
+const ProductList = observer(() => {
 
     const {productStore} = useContext(Context)
     const database = getDatabase()
@@ -20,6 +21,7 @@ const ProductList = () => {
         });
     }
 
+
     useEffect(() => {
         getProductList()
         // eslint-disable-next-line
@@ -29,16 +31,21 @@ const ProductList = () => {
     return (
         <Container>
             <div className='d-flex justify-content-around flex-wrap mt-4'>
-                {productStore.productList === null ? <Loader/> : productStore.productList.map((product) => {
-                    return <ProductInfo key={product.id}
-                                        title={product.title}
-                                        image={product.image}
-                                        price={product.price}
-                                        sale={product.sale}
-                                        date={product.date}/>
-                })}</div>
+                {productStore.productList === null ?
+                    <Loader/> : Object.entries(productStore.productList).map(([key, value], i) => {
+                        return (
+                            <ProductInfo id={key}
+                                         title={value.title}
+                                         image={value.image}
+                                         price={value.price}
+                                         sale={value.sale}
+                                         date={value.date}/>
+                        )
+                    })
+                }
+            </div>
         </Container>
     );
-};
+});
 
 export default ProductList;

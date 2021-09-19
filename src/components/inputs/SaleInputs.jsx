@@ -3,6 +3,7 @@ import {Col, Form, Row} from "react-bootstrap";
 import {validations} from "../../validation";
 
 const SaleInputs = ({register, errors, checkSales, setValue}) => {
+
     const today = new Date().toISOString().slice(0, 10)
 
     if (!checkSales) {

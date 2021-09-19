@@ -9,8 +9,6 @@ import {Context} from "../../index";
 
 const Login = observer(() => {
     const {productStore} = useContext(Context)
-
-
     const {register, handleSubmit, setValue, formState: {errors}} = useForm();
 
     const handleRegistration = data => {
