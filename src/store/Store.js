@@ -5,7 +5,8 @@ export default class ProductStore {
         this._isAuth = false
         this._productList = null
         this._productInfo = null
-        this._productEdit = ''
+        this._productEdit = null
+        this._productId = null
         this._error = null
         this._token = null
         this._loading = false
@@ -26,6 +27,10 @@ export default class ProductStore {
 
     setProductEdit(product) {
         this._productEdit = product
+    }
+
+    setProductId(id) {
+        this._productId = id
     }
 
     setToken(token) {
@@ -54,6 +59,10 @@ export default class ProductStore {
 
     get productEdit() {
         return this._productEdit
+    }
+
+    get productId() {
+        return this._productId
     }
 
     get token() {

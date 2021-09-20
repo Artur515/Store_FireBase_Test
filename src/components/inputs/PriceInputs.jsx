@@ -5,7 +5,7 @@ import {validations} from "../../validation";
 const PriceInputs = ({register, errors,}) => {
 
     return (
-        <Form.Group className="mb-2">
+        <Form.Group className="mb-3">
             <Form.Label>Price</Form.Label>
             <Form.Control  type="number" placeholder="Enter price"
                           {...register('price', validations.price)}/>

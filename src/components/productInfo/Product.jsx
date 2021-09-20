@@ -33,6 +33,7 @@ const Product = observer(({image, title, sale, date, price, id}) => {
             productStore.setError(error)
         })
         // eslint-disable-next-line
+        productStore.setProductId(id)
         history.push(PRODUCT_EDIT)
     }
 

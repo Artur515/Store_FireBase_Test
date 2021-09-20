@@ -8,12 +8,14 @@ import PriceInputs from "../inputs/PriceInputs";
 import TextInputs from "../inputs/TextInputs";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
+import Message from "../../helpers/message/Message";
 
 
 const ProductAddEdit = observer(() => {
         const {productStore} = useContext(Context)
         const [checkSales, setCheckSales] = useState(false)
         const [image, setImage] = useState('')
+        const [message, setMessage] = useState('')
         const database = getDatabase();
 
 
@@ -22,6 +24,7 @@ const ProductAddEdit = observer(() => {
         //for add new product
         const addNewProduct = async (date, description = '', price, sale, title, id) => {
             await set(ref(database, 'products/' + id), {
+                id: id,
                 title: title,
                 price: price,
                 description: description,
@@ -42,26 +45,11 @@ const ProductAddEdit = observer(() => {
             setValue('sale', '')
             setValue('date', '')
             setCheckSales(false)
+            setMessage("Product has been added")
         }
 
-
-        const handleEditProduct = (data) => {
-            const newId = Date.now()
-            const editedData = {
-                title: data.title,
-                price: data.price,
-                description: data.description,
-                image: productStore.productEdit.image,
-                sale: data.sale,
-                date: data.date
-            }
-            const updates = {}
-            updates['products/' + newId] = editedData
-            return update(ref(database), updates)
-        }
 
 // console.log(productStore.productEdit)
-
 //for edit product
         useEffect(() => {
             setValue('price', productStore.productEdit?.price)
@@ -74,12 +62,39 @@ const ProductAddEdit = observer(() => {
         }, [productStore.productEdit])
 
 
+        // console.log(productStore.productId)
+
+        const id = productStore.productId
+
+        const handleEditProduct = (data) => {
+            const editedData = {
+                id: id,
+                title: data.title,
+                price: data.price,
+                description: data.description,
+                image: productStore.productEdit.image,
+                sale: data.sale,
+                date: data.date
+            }
+            const updates = {}
+            updates['products/' + id] = editedData
+            update(ref(database), updates)
+            setValue('price', '')
+            setValue('title', '')
+            setValue('description', '')
+            setValue('sale', '')
+            setValue('date', '')
+            setCheckSales(false)
+            setMessage("Product has been update")
+        }
+
+
         return (
             <Container className='mt-3 '>
+                {message && <Message children={message}/>}
                 <Card>
                     <Form className='p-3'
                           onSubmit={handleSubmit(productStore.productEdit !== null ? handleEditProduct : handleAddProduct)}>
-
                         <FileInput register={register}
                                    errors={errors}
                                    image={image}
