@@ -4,6 +4,8 @@ export default class ProductStore {
     constructor() {
         this._isAuth = false
         this._productList = null
+        this._productInfo = null
+        this._productEdit = ''
         this._error = null
         this._token = null
         this._loading = false
@@ -16,6 +18,14 @@ export default class ProductStore {
 
     setProductList(products) {
         this._productList = products
+    }
+
+    setProductInfo(product) {
+        this._productInfo = product
+    }
+
+    setProductEdit(product) {
+        this._productEdit = product
     }
 
     setToken(token) {
@@ -36,6 +46,14 @@ export default class ProductStore {
 
     get productList() {
         return this._productList
+    }
+
+    get productInfo() {
+        return this._productInfo
+    }
+
+    get productEdit() {
+        return this._productEdit
     }
 
     get token() {

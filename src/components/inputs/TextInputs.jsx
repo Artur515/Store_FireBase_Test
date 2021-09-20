@@ -7,7 +7,7 @@ const TextInputs = ({register, errors}) => {
 
     return (
         <>
-            <Form.Group className="mb-4">
+            <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
                 <Form.Control type="text" placeholder="Enter title"
                               {...register('title', validations.title)}/>

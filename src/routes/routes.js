@@ -1,9 +1,8 @@
 import {LOGIN_ROUTE, PRODUCT_ADD, PRODUCT_EDIT, PRODUCT_INFO, PRODUCT_LIST} from "../utils/constants";
 import Login from "../components/login/Login";
 import ProductList from "../components/productList/ProductList";
-import ProductInfo from "../components/productInfo/ProductInfo";
-import ProductAdd from "../components/productAdd/ProductAdd";
-import ProductEdit from "../components/productEdit/ProductEdit";
+import ProductAddEdit from "../components/productAdd/ProductAddEdit";
+import ProductInfo from "../components/productEdit/ProductInfo";
 
 export const publicRoutes = [
     {
@@ -23,10 +22,10 @@ export const privateRoutes = [
     },
     {
         path: PRODUCT_ADD,
-        Component: ProductAdd
+        Component: ProductAddEdit
     },
     {
         path: PRODUCT_EDIT,
-        Component: ProductEdit
+        Component: ProductAddEdit
     }
 ]
