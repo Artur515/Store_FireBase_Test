@@ -2,7 +2,7 @@ import {LOGIN_ROUTE, PRODUCT_ADD, PRODUCT_EDIT, PRODUCT_INFO, PRODUCT_LIST} from
 import Login from "../components/login/Login";
 import ProductList from "../components/productList/ProductList";
 import ProductAddEdit from "../components/productAdd/ProductAddEdit";
-import ProductInfo from "../components/productEdit/ProductInfo";
+import ProductInfo from "../components/productInfo/ProductInfo";
 
 export const publicRoutes = [
     {

@@ -1,10 +1,11 @@
-.card {
-    width: 18rem;
-    margin: 15px;
+.card_info_body_image {
+    max-width: 50%
 }
 
-.card_image {
-    max-width: 300px;
-    max-height: 250px;
-    object-fit: contain;
+.card_info_image {
+    width: 100%;
+}
+
+.card_info_text {
+    max-width: 50%;
 }

@@ -3,7 +3,7 @@ import {ref, onValue, getDatabase} from "firebase/database";
 import {Container} from "react-bootstrap";
 import {Context} from "../../index";
 import Loader from "../../helpers/loader/Loader";
-import Product from "../productInfo/Product";
+import Product from "../product/Product";
 import {observer} from "mobx-react-lite";
 
 const ProductList = observer(() => {
