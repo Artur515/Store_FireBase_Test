@@ -44,6 +44,7 @@ const ProductAddEdit = observer(() => {
             setValue('description', '')
             setValue('sale', '')
             setValue('date', '')
+            setImage('')
             setCheckSales(false)
             setMessage("Product has been added")
         }
@@ -84,6 +85,7 @@ const ProductAddEdit = observer(() => {
             setValue('description', '')
             setValue('sale', '')
             setValue('date', '')
+            setImage('')
             setCheckSales(false)
             setMessage("Product has been update")
         }

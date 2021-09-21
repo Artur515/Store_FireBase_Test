@@ -46,7 +46,9 @@ const Product = observer(({image, title, sale, date, price, id}) => {
                     </Link>
                     <Card.Body className='d-flex flex-column justify-content-end '>
                         <Card.Title>{title}</Card.Title>
-                        <Card.Title>{sale ? `Sale Price:${salePercentage(price, sale)}$` : `Price: ${price} $`}</Card.Title>
+                        <Card.Title>
+                            {sale ? `Sale Price:${salePercentage(price, sale)}$` : `Price: ${price} $`}
+                        </Card.Title>
                     </Card.Body>
                     <Card.Body className='d-flex flex-column'>
                         {sale ? <><big className='text-danger'>Sale : -{sale} %</big>
